@@ -14,577 +14,13 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Tajawal Font -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <style>
-
-        
-        :root {
-            --primary: #3498db;
-            --secondary: #2ecc71;
-            --dark: #2c3e50;
-            --light: #ecf0f1;
-            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
-        }
-        
-        body {
-            font-family: 'Tajawal', sans-serif;
-            overflow-x: hidden;
-            background-color: #fff;
-            color: #333;
-        }
-
-        
-        /* Navbar */
-        .navbar {
-            transition: all 0.5s ease;
-            padding: 15px 0;
-            background-color: rgba(255, 255, 255, 0.98) !important;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .navbar.scrolled {
-            padding: 10px 0;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .navbar-brand {
-            font-weight: 800;
-            font-size: 1.8rem;
-            color: var(--primary) !important;
-        }
-        
-        .nav-link {
-            font-weight: 600;
-            margin: 0 10px;
-            position: relative;
-            color: var(--dark);
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            right: 0;
-            background-color: var(--secondary);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-            right: auto;
-            left: 0;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
-            background-size: cover;
-            position: relative;
-            padding: 150px 0;
-            overflow: hidden;
-            margin-top: 70px;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: -0;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.2;
-            color: white;
-        }
-        
-        .hero h1 span {
-            color: var(--secondary);
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            color: #eee;
-        }
-        
-        .hero-img {
-            position: relative;
-            z-index: 2;
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        /* Buttons */
-        .btn-primary {
-            background-color: var(--primary);
-            border: none;
-            padding: 12px 30px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            background-color: #2980b9;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
-        }
-        
-        .btn-secondary {
-            background-color: var(--secondary);
-            border: none;
-            padding: 12px 30px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-secondary:hover {
-            background-color: #27ae60;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(46, 204, 113, 0.3);
-        }
-        
-        /* Features */
-        .features {
-            padding: 100px 0;
-            background-color: var(--light);
-        }
-        
-        .feature-card {
-            background: #fff;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: all 0.5s ease;
-            height: 100%;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            color: white;
-            font-size: 30px;
-        }
-        
-        /* Services */
-        .services {
-            padding: 100px 0;
-            background-color: #fff;
-        }
-        
-        .service-card {
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: all 0.5s ease;
-            margin-bottom: 30px;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .service-img {
-            height: 200px;
-            overflow: hidden;
-        }
-        
-        .service-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .service-card:hover .service-img img {
-            transform: scale(1.1);
-        }
-        
-        /* About */
-        .about {
-            padding: 100px 0;
-            background-color: var(--light);
-        }
-        
-        .about-img {
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Stats */
-        .stats {
-            padding: 80px 0;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .stat-item {
-            text-align: center;
-            padding: 20px;
-            margin-bottom: 15px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-        }
-        
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-        
-        .stat-label {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-        
-        /* Download Banner */
-        .download-banner {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            padding: 80px 0;
-            color: white;
-            text-align: center;
-        }
-        
-        .download-banner h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-        }
-        
-        .download-banner h2 span {
-            position: relative;
-        }
-        
-        .download-banner h2 span::after {
-            content: '';
-            position: absolute;
-            bottom: 5px;
-            left: 0;
-            width: 100%;
-            height: 10px;
-            background-color: rgba(255, 255, 255, 0.3);
-            z-index: -1;
-        }
-        
-        .btn-light {
-            background-color: white;
-            color: var(--primary);
-            border: none;
-            padding: 12px 30px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            margin: 0 10px;
-        }
-        
-        .btn-light:hover {
-            background-color: #f1f1f1;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Footer */
-        .footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 80px 0 0;
-        }
-        
-        .footer h3 {
-            font-size: 1.5rem;
-            margin-bottom: 25px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background: var(--secondary);
-        }
-        
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-links a {
-            color: #ddd;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-        
-        .footer-links a:hover {
-            color: var(--secondary);
-            padding-right: 5px;
-        }
-        
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            margin-left: 10px;
-            transition: all 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            background-color: var(--secondary);
-            transform: translateY(-3px);
-        }
-        
-        .copyright {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 20px 0;
-            margin-top: 50px;
-            text-align: center;
-        }
-        
-        /* Media Queries */
-        @media (max-width: 1400px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
-        }
-
-        @media (max-width: 1200px) {
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .feature-card {
-                padding: 25px;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .hero {
-                padding: 120px 0;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .hero-img {
-                margin-top: 40px;
-            }
-            
-            .feature-icon {
-                width: 70px;
-                height: 70px;
-                font-size: 25px;
-            }
-            
-            .about-content {
-                padding-left: 0 !important;
-                margin-top: 30px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                padding: 100px 0;
-                text-align: center;
-            }
-            
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .download-buttons {
-                justify-content: center;
-            }
-            
-            .section-header h2 {
-                font-size: 2rem;
-            }
-            
-            .stat-number {
-                font-size: 2.5rem;
-            }
-            
-            .footer-links {
-                margin-bottom: 30px;
-            }
-            
-            .navbar-brand {
-                font-size: 1.5rem;
-            }
-            
-            .navbar-collapse {
-                background-color: white;
-                padding: 15px;
-                border-radius: 8px;
-                margin-top: 10px;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            }
-            
-            .nav-link {
-                margin: 5px 0;
-                padding: 8px 0;
-            }
-            
-            .service-card {
-                max-width: 350px;
-                margin-left: auto;
-                margin-right: auto;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero {
-                padding: 80px 0;
-            }
-            
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .btn-primary, .btn-secondary, .btn-light {
-                padding: 10px 20px;
-                font-size: 0.9rem;
-            }
-            
-            .feature-card {
-                padding: 20px;
-            }
-            
-            .feature-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 20px;
-            }
-            
-            .service-card {
-                margin-bottom: 20px;
-            }
-            
-            .download-banner h2 {
-                font-size: 1.8rem;
-            }
-            
-            .footer {
-                padding: 50px 0 0;
-            }
-            
-            .stat-item {
-                padding: 15px;
-            }
-            
-            .stat-number {
-                font-size: 2rem;
-            }
-            
-            .stat-label {
-                font-size: 1rem;
-            }
-        }
-
-        /* تعديلات خاصة للهواتف الأفقية */
-        @media (max-width: 992px) and (orientation: landscape) {
-            .hero {
-                padding: 80px 0;
-            }
-            
-            .hero-img {
-                max-height: 300px;
-                margin-top: 20px;
-            }
-        }
-
-        /* تعديلات للطباعة */
-        @media print {
-            .navbar, .download-banner, .footer {
-                display: none;
-            }
-            
-            body {
-                padding: 0;
-                background: none;
-                color: #000;
-            }
-        }
-
-        /* General fixes */
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .container {
-            padding-left: 15px;
-            padding-right: 15px;
-        }
-
-        section {
-            padding: 80px 0;
-            position: relative;
-        }
-
-        @media (max-width: 768px) {
-            section {
-                padding: 60px 0;
-            }
-            
-            .section-header {
-                margin-bottom: 30px !important;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#"><i class="fas fa-bus me-2"></i>سويفل</a>
+            <a class="navbar-brand" href="#"><i class="fas fa-bus me-2"></i>Trevo</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -616,8 +52,8 @@
             <div class="row align-items-center">
                 <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
                     <div class="hero-content text-white">
-                        <h1 class="animate__animated animate__fadeInDown">سويفل.. <span>راحتك</span> أولاً</h1>
-                        <p class="animate__animated animate__fadeInDown animate__delay-1s my-4">حجز سريع، أسعار مناسبة، رحلات مريحة في أكثر من 5 دول عربية</p>
+                        <h1 class="animate__animated animate__fadeInDown">Trevo.. <span>راحتك</span> أولاً</h1>
+                        <p class="animate__animated animate__fadeInDown animate__delay-1s my-4">استمتع بأفضل تجربة سفر مع سهولة الحجز وسرعة الوصول</p>
                         <div class="download-buttons d-flex animate__animated animate__fadeInUp animate__delay-2s">
                             <a href="#" class="btn btn-primary me-3">
                                 <i class="fab fa-google-play me-2"></i> جوجل بلاي
@@ -630,7 +66,7 @@
                 </div>
                 <!-- <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000">
                     <div class="hero-img text-center">
-                        <img src="https://via.placeholder.com/500x800/3498db/ffffff?text=سويفل" alt="تطبيق سويفل" class="img-fluid">
+                        <img src="https://via.placeholder.com/500x800/3498db/ffffff?text=Trevo" alt="تطبيق Trevo" class="img-fluid">
                     </div>
                 </div> -->
             </div>
@@ -641,7 +77,7 @@
     <section class="features" id="features">
         <div class="container">
             <div class="section-header text-center mb-5" data-aos="fade-up">
-                <h2 class="display-4 fw-bold">لماذا <span class="text-primary">سويفل</span> مميز؟</h2>
+                <h2 class="display-4 fw-bold">لماذا <span class="text-primary">Trevo</span> مميز؟</h2>
                 <p class="text-muted">اكتشف المميزات الرائعة التي تجعل تطبيقنا الأفضل للنقل بالحافلات</p>
             </div>
             <div class="row g-4">
@@ -691,8 +127,9 @@
             <div class="row text-center">
                 <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
                     <div class="stat-item">
-                        <div class="stat-number">5+</div>
-                        <div class="stat-label">دول</div>
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">وجهة سفر متاحة</div>
+                        
                     </div>
                 </div>
                 <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
@@ -776,8 +213,8 @@
                 <div class="col-lg-6" data-aos="fade-left">
                     <div class="about-content ps-lg-5 mt-5 mt-lg-0">
                         <h2 class="display-5 fw-bold">من <span class="text-primary">نحن</span>؟</h2>
-                        <p class="lead">سويفل هي شركة مصرية رائدة في مجال النقل بالحافلات عبر التطبيقات الذكية.</p>
-                        <p>تأسست شركتنا عام 2018 بهدف تطوير تجربة النقل العام وجعلها أكثر سهولة وراحة للمسافرين. نقدم خدماتنا في 5 دول عربية ولدينا أسطول من أكثر من 500 حافلة حديثة.</p>
+                        <p class="lead">Trevo هي شركة مصرية رائدة في مجال النقل بالحافلات عبر التطبيقات الذكية.</p>
+                        <p>تأسست شركتنا عام 2024 بهدف تطوير تجربة النقل العام وجعلها أكثر سهولة وراحة للمسافرين. نقدم خدماتنا في عشرات المدن ونمتلك أسطولاً يضم أكثر من 500 حافلة حديثة.</p>
                         <div class="row mt-4">
                             <div class="col-md-6 mb-3" data-aos="fade-up" data-aos-delay="100">
                                 <div class="d-flex">
@@ -853,8 +290,8 @@
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6" data-aos="fade-up">
                     <div class="footer-about">
-                        <h3><i class="fas fa-bus me-2"></i>سويفل</h3>
-                        <p class="text-white">تطبيق سويفل للنقل الذكي بالحافلات، نقدم حلول نقل مريحة وآمنة بأسعار مناسبة في 5 دول عربية.</p>
+                        <h3><i class="fas fa-bus me-2"></i>Trevo</h3>
+                        <p class="text-white">تطبيق Trevo للنقل الذكي بالحافلات، نقدم حلول نقل مريحة وآمنة بأسعار مناسبة في 5 دول عربية.</p>
                         <div class="social-links mt-4">
                             <a href="#" class="animate__animated animate__bounceIn"><i class="fab fa-facebook-f"></i></a>
                             <a href="#" class="animate__animated animate__bounceIn animate__delay-1s"><i class="fab fa-twitter"></i></a>
@@ -914,7 +351,17 @@
                 </div>
             </div>
             <div class="copyright" data-aos="fade-up">
-                <p class="text-center text-muted mb-0">جميع الحقوق محفوظة &copy; 2023 <span class="text-primary">سويفل</span></p>
+                <p class="text-center text-white mb-0">جميع الحقوق محفوظة &copy; 2025 <span class="text-primary">Trevo</span></p>
+            </div>
+            <div>
+                <a href="https://brmja.tech" target="_blank">
+                    <img
+                      src="assest/imgs/brmja.png"
+                      alt="brmja tech"
+                      width={160}
+                      style= "display: block; margin: 0 auto 0px auto;" 
+                    />
+                  </a>
             </div>
         </div>
     </footer>
@@ -927,11 +374,14 @@
     <script>
         // Initialize AOS
         AOS.init({
-            duration: 800,
-            once: true,
-            offset: 100
-        });
-        
+    duration: 800,
+    once: true,
+    offset: 100,
+    startEvent: 'DOMContentLoaded', // بدء الـ animations بعد اكتمال تحميل DOM
+    disable: function() {
+        return window.innerWidth < 768; // تعطيل الـ animations على الشاشات الصغيرة
+    }
+});
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const navbar = document.querySelector('.navbar');
